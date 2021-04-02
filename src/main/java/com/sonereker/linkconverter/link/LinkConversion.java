@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Builder
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class LinkConversion {
