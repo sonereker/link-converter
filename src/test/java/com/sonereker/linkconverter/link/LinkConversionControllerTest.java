@@ -62,4 +62,20 @@ class LinkConversionControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("url", is(equalTo(DUMMY_URL))))
                 .andExpect(MockMvcResultMatchers.jsonPath("deepLink", is(equalTo(DUMMY_DEEP_LINK))));
     }
+
+    @Test
+    void givenDeepLink_whenConvertToUrl_thenReturnUrl() throws Exception {
+        given(pageServiceImpl.findPageTypeByDeepLink(DUMMY_DEEP_LINK)).willReturn(productDetailPage);
+        given(productDetailPage.generateUrlFromDeepLink(DUMMY_DEEP_LINK)).willReturn(DUMMY_URL);
+        doReturn(null).when(linkConversionRepository).save(any());
+
+        var linkDto = new LinkDto(DUMMY_URL, DUMMY_DEEP_LINK);
+
+        mvc.perform(MockMvcRequestBuilders.post("/links/convert-to-url")
+                .content(objectMapper.writeValueAsBytes(linkDto))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("url", is(equalTo(DUMMY_URL))))
+                .andExpect(MockMvcResultMatchers.jsonPath("deepLink", is(equalTo(DUMMY_DEEP_LINK))));
+    }
 }
