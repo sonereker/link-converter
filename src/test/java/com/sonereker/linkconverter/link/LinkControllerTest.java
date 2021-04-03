@@ -3,7 +3,6 @@ package com.sonereker.linkconverter.link;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sonereker.linkconverter.page.PageServiceImpl;
 import com.sonereker.linkconverter.page.type.ProductDetailPage;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +21,11 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doReturn;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(LinkConversionController.class)
-class LinkConversionControllerTest {
+@WebMvcTest(LinkController.class)
+class LinkControllerTest {
 
-    public static final String DUMMY_URL = "https://dummy-url.com";
-    public static final String DUMMY_DEEP_LINK = "dl://?Page=Dummy";
+    private static final String DUMMY_URL = "https://dummy-url.com";
+    private static final String DUMMY_DEEP_LINK = "dl://?Page=Dummy";
 
     @Autowired
     private MockMvc mvc;
@@ -42,10 +41,6 @@ class LinkConversionControllerTest {
 
     @MockBean
     private LinkConversionRepository linkConversionRepository;
-
-    @BeforeEach
-    void setUp() {
-    }
 
     @Test
     void givenUrl_whenConvertToDeepLink_thenReturnDeepLink() throws Exception {

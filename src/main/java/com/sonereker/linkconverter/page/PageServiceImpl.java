@@ -13,10 +13,11 @@ import java.util.Set;
 
 import static com.sonereker.linkconverter.page.type.PageType.PARAM_PAGE;
 
-@Order(Ordered.HIGHEST_PRECEDENCE)
 @Service
+@Order(Ordered.HIGHEST_PRECEDENCE)
 public class PageServiceImpl implements PageService {
-    private static final Set<PageType> PAGE_TYPES = new HashSet<>();
+    static final Set<PageType> PAGE_TYPES = new HashSet<>();
+    static final String MULTIPLE_DEFAULT_PAGES_ERR = "There are multiple default page types.";
 
     @Override
     public void registerPage(PageType pageType) {
@@ -24,7 +25,7 @@ public class PageServiceImpl implements PageService {
                 .anyMatch(PageType::isDefault);
 
         if (pageType.isDefault() && defaultPageExists) {
-            throw new IllegalArgumentException("There are multiple default page types.");
+            throw new IllegalArgumentException(MULTIPLE_DEFAULT_PAGES_ERR);
         }
 
         PAGE_TYPES.add(pageType);

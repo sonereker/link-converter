@@ -1,9 +1,9 @@
 package com.sonereker.linkconverter.link;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  * JpaRepository for the LinkConversion entity
  */
-interface LinkConversionRepository extends JpaRepository<LinkConversion, Long> {
+interface LinkConversionRepository extends CrudRepository<LinkConversion, Long> {
 }

@@ -17,13 +17,13 @@ import java.net.MalformedURLException;
  */
 @RestController
 @RequestMapping("links")
-public class LinkConversionController {
+public class LinkController {
 
     private final PageServiceImpl pageService;
     private final LinkConversionRepository linkConversionRepository;
 
     @Autowired
-    public LinkConversionController(PageServiceImpl pageService, LinkConversionRepository linkConversionRepository) {
+    public LinkController(PageServiceImpl pageService, LinkConversionRepository linkConversionRepository) {
         this.pageService = pageService;
         this.linkConversionRepository = linkConversionRepository;
     }

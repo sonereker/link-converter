@@ -1,6 +1,6 @@
 package com.sonereker.linkconverter.page.type;
 
-import com.sonereker.linkconverter.page.PageServiceImpl;
+import com.sonereker.linkconverter.page.PageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,7 +33,7 @@ public class ProductDetailPage implements PageType {
     private static final String PATH_SEGMENT_BRAND = "brand";
     private static final String PRODUCT_IDENTIFIER_PREFIX = "name-p-";
 
-    private final PageServiceImpl pageService;
+    private final PageService pageService;
 
     @Value("${app.scheme}")
     private String appScheme;
@@ -42,7 +42,7 @@ public class ProductDetailPage implements PageType {
     private String appHost;
 
     @Autowired
-    public ProductDetailPage(PageServiceImpl pageService) {
+    public ProductDetailPage(PageService pageService) {
         this.pageService = pageService;
     }
 
