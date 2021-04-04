@@ -1,7 +1,9 @@
 # Link Converter
 
-An example Spring Boot REST service with endpoints to convert deep links to web urls, and vice versa according to given page URL
-patterns.
+![Build Status](https://github.com/sonereker/link-converter/actions/workflows/gradle.yml/badge.svg)
+
+An example Spring Boot REST service with endpoints to convert deep links to web urls, and vice versa according to given
+page URL patterns.
 
 ## Quick Run
 
