@@ -5,6 +5,10 @@
 An example Spring Boot REST service with endpoints to convert deep links to web urls, and vice versa according to given
 page URL patterns.
 
+Tree page types are pre-defined; `ProductPage`, `SearchPage` and a default `HomePage`. Page type of given url/deepLink is getting identified and requested deepLink/url is getting generated according to rules defined in that page type. (Please check parameterized UTs for more information about usage and sample cases.)
+
+Project is featuring some new Java and JUnit 5 features like Records, ParameterizedTest, Local Variable Type Inference. Strategy pattern is used for separating `PageType` rules.
+
 ## Quick Run
 
 ```
