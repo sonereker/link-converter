@@ -22,11 +22,18 @@ public class SearchPage implements PageType {
 
     private final PageService pageService;
 
-    @Value("${app.scheme}")
     private String appScheme;
+    private String appHost;
+
+    @Value("${app.scheme}")
+    public void setAppScheme(String appScheme) {
+        this.appScheme = appScheme;
+    }
 
     @Value("${app.host}")
-    private String appHost;
+    public void setAppHost(String appHost) {
+        this.appHost = appHost;
+    }
 
     @Autowired
     public SearchPage(PageService pageService) {

@@ -18,8 +18,12 @@ public class HomePage implements PageType {
 
     private final PageService pageService;
 
-    @Value("${app.scheme}://${app.host}")
     private String appUrl;
+
+    @Value("${app.scheme}://${app.host}")
+    public void setAppUrl(String appUrl) {
+        this.appUrl = appUrl;
+    }
 
     @Autowired
     public HomePage(PageService pageService) {

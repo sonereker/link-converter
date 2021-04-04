@@ -93,14 +93,14 @@ class PageServiceImplTest {
 
     private static Stream<Arguments> provideDeepLinkPageMappings() {
         return Stream.of(
-                Arguments.of("ty://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064", ProductDetailPage.class),
-                Arguments.of("ty://?Page=Product&ContentId=1925865", ProductDetailPage.class),
-                Arguments.of("ty://?Page=Product&ContentId=1925865&CampaignId=439892", ProductDetailPage.class),
-                Arguments.of("ty://?Page=Product&ContentId=1925865&MerchantId=105064", ProductDetailPage.class),
-                Arguments.of("ty://?Page=Search&Query=elbise", SearchPage.class),
-                Arguments.of("ty://?Page=Search&Query=%C3%BCt%C3%BC", SearchPage.class),
-                Arguments.of("ty://?Page=Favorites", HomePage.class),
-                Arguments.of("ty://?Page=Orders", HomePage.class)
+                Arguments.of("st://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064", ProductDetailPage.class),
+                Arguments.of("st://?Page=Product&ContentId=1925865", ProductDetailPage.class),
+                Arguments.of("st://?Page=Product&ContentId=1925865&CampaignId=439892", ProductDetailPage.class),
+                Arguments.of("st://?Page=Product&ContentId=1925865&MerchantId=105064", ProductDetailPage.class),
+                Arguments.of("st://?Page=Search&Query=elbise", SearchPage.class),
+                Arguments.of("st://?Page=Search&Query=%C3%BCt%C3%BC", SearchPage.class),
+                Arguments.of("st://?Page=Favorites", HomePage.class),
+                Arguments.of("st://?Page=Orders", HomePage.class)
         );
     }
 

@@ -7,7 +7,7 @@ import java.util.function.Predicate;
  * Interface for PageTypes
  */
 public interface PageType {
-    String DEEP_LINK_SCHEME = "ty";
+    String DEEP_LINK_SCHEME = "st";
     String PARAM_PAGE = "Page";
 
     /**

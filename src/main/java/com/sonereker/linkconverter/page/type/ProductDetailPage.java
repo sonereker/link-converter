@@ -1,10 +1,8 @@
 package com.sonereker.linkconverter.page.type;
 
 import com.sonereker.linkconverter.page.PageService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -33,11 +31,19 @@ public class ProductDetailPage implements PageType {
 
     private final PageService pageService;
 
-    @Value("${app.scheme}")
+
     private String appScheme;
+    private String appHost;
+
+    @Value("${app.scheme}")
+    public void setAppScheme(String appScheme) {
+        this.appScheme = appScheme;
+    }
 
     @Value("${app.host}")
-    private String appHost;
+    public void setAppHost(String appHost) {
+        this.appHost = appHost;
+    }
 
     @Autowired
     public ProductDetailPage(PageService pageService) {
