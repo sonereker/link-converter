@@ -16,12 +16,10 @@ import java.util.regex.Pattern;
 /**
  * ProductDetailPage
  */
-@Slf4j
-@Order(1)
 @Component
 public class ProductDetailPage implements PageType {
     private static final Predicate<String> URL_PATTERN_PREDICATE =
-            Pattern.compile("^https://www.store.com/[a-z]*/[a-z]*-p-[0-9]{5,10}(\\?[a-zA-Z0-9=&]*)?$").asPredicate();
+            Pattern.compile("^http(s)://[a-z-:0-9.]*/[a-z]{2,255}/[a-z-]*-p-[0-9]{5,10}\\??([a-zA-Z0-9=&]*)$").asPredicate();
 
     private static final String PRODUCT_INFO_SEGMENT_SPLITTER = "-p-";
     private static final String PAGE_TYPE = "Product";

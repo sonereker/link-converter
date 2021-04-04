@@ -1,28 +1,19 @@
 package com.sonereker.linkconverter.page.type;
 
 import com.sonereker.linkconverter.page.PageService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.annotation.PostConstruct;
-import java.net.MalformedURLException;
 import java.util.function.Predicate;
-import java.util.regex.Pattern;
 
 /**
  * HomePage a.k.a. DefaultPage
  */
-@Slf4j
-@Order
 @Component
 public class HomePage implements PageType {
-    private static final Predicate<String> URL_PATTERN_PREDICATE =
-            Pattern.compile("^https://www.store.com/.*$").asPredicate();
-
     public static final String PAGE_TYPE = "Home";
 
     private final PageService pageService;
@@ -36,7 +27,7 @@ public class HomePage implements PageType {
     }
 
     @Override
-    public String generateDeepLinkFromUrl(String url) throws MalformedURLException {
+    public String generateDeepLinkFromUrl(String url) {
         return UriComponentsBuilder.newInstance()
                 .scheme(DEEP_LINK_SCHEME)
                 .host("")
@@ -52,7 +43,7 @@ public class HomePage implements PageType {
 
     @Override
     public Predicate<String> getUrlPatternPredicate() {
-        return URL_PATTERN_PREDICATE;
+        return s -> false; // URL matching is not wanted for default PageType
     }
 
     @Override

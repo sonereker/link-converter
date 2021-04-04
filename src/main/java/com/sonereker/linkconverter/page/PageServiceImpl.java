@@ -1,7 +1,6 @@
 package com.sonereker.linkconverter.page;
 
 import com.sonereker.linkconverter.exception.MissingDefaultPageException;
-import com.sonereker.linkconverter.exception.UrlPatternNotFoundException;
 import com.sonereker.linkconverter.page.type.PageType;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -12,11 +11,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static com.sonereker.linkconverter.page.type.PageType.PARAM_PAGE;
+import static java.util.Collections.unmodifiableSet;
 
 @Service
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class PageServiceImpl implements PageService {
-    static final Set<PageType> PAGE_TYPES = new HashSet<>();
+    private static final Set<PageType> PAGE_TYPES = new HashSet<>();
     static final String MULTIPLE_DEFAULT_PAGES_ERR = "There are multiple default page types.";
 
     @Override
@@ -29,6 +29,16 @@ public class PageServiceImpl implements PageService {
         }
 
         PAGE_TYPES.add(pageType);
+    }
+
+    @Override
+    public void unRegisterAllPageTypes() {
+        PAGE_TYPES.clear();
+    }
+
+    @Override
+    public Set<PageType> getPageTypes() {
+        return unmodifiableSet(PAGE_TYPES);
     }
 
     @Override
@@ -48,7 +58,7 @@ public class PageServiceImpl implements PageService {
         return PAGE_TYPES.stream()
                 .filter(p -> p.getUrlPatternPredicate().test(url))
                 .findFirst()
-                .orElseThrow(UrlPatternNotFoundException::new);
+                .orElse(getDefaultPageType());
     }
 
     private PageType getDefaultPageType() {

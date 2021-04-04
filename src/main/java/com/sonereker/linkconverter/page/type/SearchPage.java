@@ -1,10 +1,8 @@
 package com.sonereker.linkconverter.page.type;
 
 import com.sonereker.linkconverter.page.PageService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -12,12 +10,10 @@ import javax.annotation.PostConstruct;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
-@Slf4j
-@Order(2)
 @Component
 public class SearchPage implements PageType {
     private static final Predicate<String> URL_PATTERN_PREDICATE =
-            Pattern.compile("^https://www.store.com/all-products\\?.*$").asPredicate();
+            Pattern.compile("^https://[a-z-:0-9.]*/all-products\\?q=[a-zA-Z0-9%]*$").asPredicate();
 
     private static final String PAGE_TYPE = "Search";
     private static final String PARAM_QUERY = "Query";
