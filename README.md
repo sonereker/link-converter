@@ -23,12 +23,11 @@ Visit http://localhost:8080/swagger-ui/#/
 
 * PostgreSQL 13
 * Java 15
-* Gradle 6.8.3
 
 Database and user should be created according to properties in `application.yml`.
 
 ```
-gradle clean build bootRun
+./gradlew build bootRun
 ```
 
 ## API Docs
