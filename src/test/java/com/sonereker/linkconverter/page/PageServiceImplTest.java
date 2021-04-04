@@ -4,6 +4,7 @@ import com.sonereker.linkconverter.page.type.HomePage;
 import com.sonereker.linkconverter.page.type.PageType;
 import com.sonereker.linkconverter.page.type.ProductDetailPage;
 import com.sonereker.linkconverter.page.type.SearchPage;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -36,6 +37,11 @@ class PageServiceImplTest {
         pageService = new PageServiceImpl();
     }
 
+    @AfterEach
+    void cleanUp() {
+        pageService.unRegisterAllPageTypes();
+    }
+
     @Test
     void givenProductDetailPage_whenRegister_thenRegisterPageType() {
         var productDetailPage = new ProductDetailPage(pageService);
@@ -43,8 +49,6 @@ class PageServiceImplTest {
 
         var pageTypeRegistered = pageService.getPageTypes().contains(productDetailPage);
         assertTrue(pageTypeRegistered);
-
-        pageService.unRegisterAllPageTypes();
     }
 
     @Test
@@ -56,8 +60,6 @@ class PageServiceImplTest {
                 () -> pageService.registerPage(dummyDefaultPageType));
 
         assertThat(exception.getMessage(), is(MULTIPLE_DEFAULT_PAGES_ERR));
-
-        pageService.unRegisterAllPageTypes();
     }
 
     @ParameterizedTest
