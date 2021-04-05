@@ -56,19 +56,19 @@ class ProductDetailPageTest {
 
     private static Stream<Arguments> provideUrlDeepLinkMappings() {
         return Stream.of(
-                Arguments.of(STORE_URL + "/casio/saat-p-1925865?boutiqueId=439892&merchantId=105064", "st://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064"),
-                Arguments.of(STORE_URL + "/casio/erkek-kol-saati-p-1925865", "st://?Page=Product&ContentId=1925865"),
-                Arguments.of(STORE_URL + "/casio/erkek-kol-saati-p-1925865?boutiqueId=439892", "st://?Page=Product&ContentId=1925865&CampaignId=439892"),
-                Arguments.of(STORE_URL + "/casio/erkek-kol-saati-p-1925865?merchantId=105064", "st://?Page=Product&ContentId=1925865&MerchantId=105064")
+                Arguments.of(STORE_URL + "/tissot/watch-p-12345?storeId=10001&sellerId=20001", "st://?Page=Product&ContentId=12345&DiscountId=10001&SellerId=20001"),
+                Arguments.of(STORE_URL + "/tissot/mens-watches-p-12345", "st://?Page=Product&ContentId=12345"),
+                Arguments.of(STORE_URL + "/tissot/mens-watches-p-12345?storeId=10001", "st://?Page=Product&ContentId=12345&DiscountId=10001"),
+                Arguments.of(STORE_URL + "/tissot/mens-watches-p-12345?sellerId=20001", "st://?Page=Product&ContentId=12345&SellerId=20001")
         );
     }
 
     private static Stream<Arguments> provideDeepLinkUrlMappings() {
         return Stream.of(
-                Arguments.of("st://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064", STORE_URL + "/brand/name-p-1925865?boutiqueId=439892&merchantId=105064"),
-                Arguments.of("st://?Page=Product&ContentId=1925865", STORE_URL + "/brand/name-p-1925865"),
-                Arguments.of("st://?Page=Product&ContentId=1925865&CampaignId=439892", STORE_URL + "/brand/name-p-1925865?boutiqueId=439892"),
-                Arguments.of("st://?Page=Product&ContentId=1925865&MerchantId=105064", STORE_URL + "/brand/name-p-1925865?merchantId=105064")
+                Arguments.of("st://?Page=Product&ContentId=12345&DiscountId=10001&SellerId=20001", STORE_URL + "/brand/product-p-12345?storeId=10001&sellerId=20001"),
+                Arguments.of("st://?Page=Product&ContentId=12345", STORE_URL + "/brand/product-p-12345"),
+                Arguments.of("st://?Page=Product&ContentId=12345&DiscountId=10001", STORE_URL + "/brand/product-p-12345?storeId=10001"),
+                Arguments.of("st://?Page=Product&ContentId=12345&SellerId=20001", STORE_URL + "/brand/product-p-12345?sellerId=20001")
         );
     }
 }

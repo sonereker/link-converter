@@ -93,11 +93,11 @@ class PageServiceImplTest {
 
     private static Stream<Arguments> provideDeepLinkPageMappings() {
         return Stream.of(
-                Arguments.of("st://?Page=Product&ContentId=1925865&CampaignId=439892&MerchantId=105064", ProductDetailPage.class),
-                Arguments.of("st://?Page=Product&ContentId=1925865", ProductDetailPage.class),
-                Arguments.of("st://?Page=Product&ContentId=1925865&CampaignId=439892", ProductDetailPage.class),
-                Arguments.of("st://?Page=Product&ContentId=1925865&MerchantId=105064", ProductDetailPage.class),
-                Arguments.of("st://?Page=Search&Query=elbise", SearchPage.class),
+                Arguments.of("st://?Page=Product&ContentId=12345&DiscountId=10001&SellerId=20001", ProductDetailPage.class),
+                Arguments.of("st://?Page=Product&ContentId=12345", ProductDetailPage.class),
+                Arguments.of("st://?Page=Product&ContentId=12345&DiscountId=10001", ProductDetailPage.class),
+                Arguments.of("st://?Page=Product&ContentId=12345&SellerId=20001", ProductDetailPage.class),
+                Arguments.of("st://?Page=Search&Query=baby", SearchPage.class),
                 Arguments.of("st://?Page=Search&Query=%C3%BCt%C3%BC", SearchPage.class),
                 Arguments.of("st://?Page=Favorites", HomePage.class),
                 Arguments.of("st://?Page=Orders", HomePage.class)
@@ -106,10 +106,10 @@ class PageServiceImplTest {
 
     private static Stream<Arguments> provideUrlPageMappings() {
         return Stream.of(
-                Arguments.of("https://www.store.com/casio/saat-p-1925865?boutiqueId=439892&merchantId=105064", ProductDetailPage.class),
-                Arguments.of("https://www.store.com/casio/erkek-kol-saati-p-1925865", ProductDetailPage.class),
-                Arguments.of("https://www.store.com/casio/erkek-kol-saati-p-1925865?boutiqueId=439892", ProductDetailPage.class),
-                Arguments.of("https://www.store.com/casio/erkek-kol-saati-p-1925865?merchantId=105064", ProductDetailPage.class),
+                Arguments.of("https://www.store.com/tissot/watch-p-12345?storeId=10001&sellerId=20001", ProductDetailPage.class),
+                Arguments.of("https://www.store.com/tissot/mens-watches-p-12345", ProductDetailPage.class),
+                Arguments.of("https://www.store.com/tissot/mens-watches-p-12345?storeId=10001", ProductDetailPage.class),
+                Arguments.of("https://www.store.com/tissot/mens-watches-p-12345?sellerId=20001", ProductDetailPage.class),
                 Arguments.of("https://www.store.com/all-products?q=elbise", SearchPage.class),
                 Arguments.of("https://www.store.com/all-products?q=%C3%BCt%C3%BC", SearchPage.class),
                 Arguments.of("https://www.store.com/account/favorites", HomePage.class),

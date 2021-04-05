@@ -22,12 +22,12 @@ public class ProductDetailPage implements PageType {
     private static final String PRODUCT_INFO_SEGMENT_SPLITTER = "-p-";
     private static final String PAGE_TYPE = "Product";
     private static final String PARAM_CONTENT_ID = "ContentId";
-    private static final String PARAM_CAMPAIGN_ID = "CampaignId";
-    private static final String PARAM_MERCHANT_ID = "MerchantId";
-    private static final String PARAM_BOUTIQUE_ID = "boutiqueId";
-    private static final String PARAM_URL_MERCHANT_ID = "merchantId";
+    private static final String PARAM_DISCOUNT_ID = "DiscountId";
+    private static final String PARAM_SELLER_ID = "SellerId";
+    private static final String PARAM_STORE_ID = "storeId";
+    private static final String PARAM_URL_SELLER_ID = "sellerId";
     private static final String PATH_SEGMENT_BRAND = "brand";
-    private static final String PRODUCT_IDENTIFIER_PREFIX = "name-p-";
+    private static final String PRODUCT_IDENTIFIER_PREFIX = "product-p-";
 
     private final PageService pageService;
 
@@ -62,8 +62,8 @@ public class ProductDetailPage implements PageType {
                 .host("")
                 .queryParam(PARAM_PAGE, PAGE_TYPE)
                 .queryParam(PARAM_CONTENT_ID, productValues[1])
-                .queryParamIfPresent(PARAM_CAMPAIGN_ID, Optional.ofNullable(queryParams.getFirst(PARAM_BOUTIQUE_ID)))
-                .queryParamIfPresent(PARAM_MERCHANT_ID, Optional.ofNullable(queryParams.getFirst(PARAM_URL_MERCHANT_ID)))
+                .queryParamIfPresent(PARAM_DISCOUNT_ID, Optional.ofNullable(queryParams.getFirst(PARAM_STORE_ID)))
+                .queryParamIfPresent(PARAM_SELLER_ID, Optional.ofNullable(queryParams.getFirst(PARAM_URL_SELLER_ID)))
                 .build()
                 .toUriString();
     }
@@ -78,8 +78,8 @@ public class ProductDetailPage implements PageType {
                 .host(appHost)
                 .pathSegment(PATH_SEGMENT_BRAND)
                 .path(PRODUCT_IDENTIFIER_PREFIX + queryParams.getFirst(PARAM_CONTENT_ID))
-                .queryParamIfPresent(PARAM_BOUTIQUE_ID, Optional.ofNullable(queryParams.getFirst(PARAM_CAMPAIGN_ID)))
-                .queryParamIfPresent(PARAM_URL_MERCHANT_ID, Optional.ofNullable(queryParams.getFirst(PARAM_MERCHANT_ID)))
+                .queryParamIfPresent(PARAM_STORE_ID, Optional.ofNullable(queryParams.getFirst(PARAM_DISCOUNT_ID)))
+                .queryParamIfPresent(PARAM_URL_SELLER_ID, Optional.ofNullable(queryParams.getFirst(PARAM_SELLER_ID)))
                 .build()
                 .toUriString();
     }
